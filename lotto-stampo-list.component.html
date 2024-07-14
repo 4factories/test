@@ -1,0 +1,39 @@
+<fff-navbar></fff-navbar>
+<table *ngIf="lottoStampaList" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+       class="row-border hover">
+  <thead>
+  <tr>
+    <th scope="col">Codice</th>
+    <th scope="col">Descrizione</th>
+    <th scope="col">Data Creazione</th>
+    <th scope="col">Stabilimento</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (obj of lottoStampaList; track obj.uid) {
+      <tr>
+        <td>
+          {{ obj.codice }}
+        </td>
+        <td>
+          {{ obj.descrizione }}
+        </td>
+        <td>
+          {{ obj.dataCreazione  | date: 'dd/MM/yyyy' }}
+        </td>
+        <td>
+          {{ obj.stabilimento.descrizione }}
+        </td>
+        <td>
+          <button class="btn btn-info" (click)="onLottoStampaRigaDelete()">
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
